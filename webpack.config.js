@@ -21,16 +21,17 @@ const htmlPluginEntries = templateFiles.map((template) => new HTMLWebpackPlugin(
   hash: false,
   filename: template,
   template: path.resolve(environment.paths.source, template),
-  favicon: path.resolve(environment.paths.source, 'images', 'favicon.ico'),
+  favicon: path.resolve(environment.paths.source, 'err_images', 'favicon.ico'),
 }));
 
 module.exports = {
   entry: {
-    app: path.resolve(environment.paths.source, 'js', 'app.js'),
+    app: path.resolve(environment.paths.source, 'err_js', 'app.js'),
   },
   output: {
-    filename: 'js/[name].js',
+    filename: 'err_js/[name].js',
     path: environment.paths.output,
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -73,7 +74,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
+      filename: 'err_css/[name].css',
     }),
     new ImageMinimizerPlugin({
       test: /\.(jpe?g|png|gif|svg)$/i,
@@ -96,8 +97,8 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(environment.paths.source, 'images', 'content'),
-          to: path.resolve(environment.paths.output, 'images', 'content'),
+          from: path.resolve(environment.paths.source, 'err_images', 'content'),
+          to: path.resolve(environment.paths.output, 'err_images', 'content'),
           toType: 'dir',
           globOptions: {
             ignore: ['*.DS_Store', 'Thumbs.db'],
