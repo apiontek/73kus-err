@@ -1,0 +1,66 @@
+// /* By Athlon Front-End Team */
+
+// /* Core variables */
+// @import 'base/vars';
+
+// /* CSS Reset */
+// @import 'base/reset';
+
+// /* CSS print */
+// @import 'base/print';
+
+// /* Fonts */
+// @import 'base/fonts';
+
+// /* Mixins, helpers and functions */
+// @import 'base/mixins';
+
+// /* Vendor */
+
+// /* Components */
+
+// /* Browser specific styles */
+// @import 'dirty/hacks';
+
+// /* Demo Page styles */
+// @import 'demo';
+
+/* Tailwind imports */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+/* unicorn images */
+img {
+  &.unicorn {
+    max-width: 95% !important;
+    @media (min-width: 512px) {
+      max-width: 85% !important;
+    }
+    @media (min-width: 640px) {
+      max-width: 50% !important;
+    }
+    @media (min-width: 768px) {
+      max-width: 40% !important;
+    }
+    @media (min-width: 1024px) {
+      max-width: 35% !important;
+    }
+    @media (min-width: 1280px) {
+      max-width: 30% !important;
+    }
+    @media (min-width: 1536px) {
+      max-width: 25% !important;
+    }
+  }
+}
+
+p {
+  &.text-info {
+    text-shadow: 0 2px 2px rgba(243,244,246,0.3);
+  }
+  &.text-copy {
+    font-size: 0.6rem;
+  }
+}
