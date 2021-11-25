@@ -9,7 +9,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { extendDefaultPlugins } = require('svgo');
+const HtmlReplaceWebpackPlugin = require('html-replace-webpack-plugin')
 
 const environment = require('./configuration/environment');
 
@@ -90,6 +90,16 @@ module.exports = {
         ],
       },
     }),
+    new HtmlReplaceWebpackPlugin([
+      {
+        pattern: '@@errcode@@',
+        replacement: '{{placeholder "http.error.status_code"}}'
+      },
+      {
+        pattern: '@@errtext@@',
+        replacement: '{{placeholder "http.error.status_text"}}'
+      }
+    ]),
     new CleanWebpackPlugin({
       verbose: true,
       cleanOnceBeforeBuildPatterns: ['**/*', '!stats.json'],
