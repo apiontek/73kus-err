@@ -2,13 +2,13 @@
 
 Based off [frontend-webpack-boilerplate](https://github.com/WeAreAthlon/frontend-webpack-boilerplate) with TailwindCSS added.
 
-Builds html & css that can be used as custom error pages with, e.g., nginx.
+Builds html & css that can be used as custom error page templates with caddy.
 
 ## NOTE
 
-After production build, optionally remove the app.js script tags from the built files, just to optimize things further.
+After production build, optionally remove the empty, 0-byte app.js script tags from the built files, just to optimize things further.
 
-### nginx example
+### caddy example
 
 This could probably be optimized but it's working:
 

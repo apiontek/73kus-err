@@ -1,7 +1,7 @@
 {
   "author": "Adam Piontek <adam@73k.us> (https://73k.us)",
   "name": "@73kus/custom-rainbow-error-pages",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Simple but pretty unicorn rainbow error pages for webserver 40x/50x HTTP errors",
   "homepage": "https://git.73k.us/73kus-err.git",
   "browserslist": [
