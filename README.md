@@ -10,26 +10,26 @@ After production build, optionally remove the empty, 0-byte app.js script tags f
 
 ### caddy example
 
-This could probably be optimized but it's working:
+With this snippet in the Caddyfile, for a site one can `import err` to handle errors for that site.
 
 ```
-# Custom Unicorn Rainbow error pages
-location /err_css {
-  root /var/www/err;
-  autoindex off;
-  expires max;
-}
-location /err_images {
-  root /var/www/err;
-  autoindex off;
-  expires max;
-}
-error_page 403 404 /40x.html;
-location = /40x.html {
-  root /var/www/err;
-}
-error_page 500 502 503 504 /50x.html;
-location = /50x.html {
-  root /var/www/err;
+(err) {
+	root /err_css/* /www/err
+	root /err_images/* /www/err
+	respond /unknown_error_not_4xx_not_5xx "{http.error.status_code} {http.error.status_text}"
+
+	handle_errors {
+		@4xx expression `{http.error.status_code} >= 400 && {http.error.status_code} < 500`
+		@5xx expression `{http.error.status_code} >= 500 && {http.error.status_code} < 600`
+
+		root * /www/err
+		encode zstd gzip
+		file_server
+
+		rewrite @4xx /4xx.html
+		rewrite @5xx /5xx.html
+		rewrite * /unknown_error_not_4xx_not_5xx
+		templates
+	}
 }
 ```
