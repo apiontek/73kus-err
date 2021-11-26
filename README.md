@@ -14,8 +14,14 @@ With this snippet in the Caddyfile, for a site one can `import err` to handle er
 
 ```
 (err) {
-	root /err_css/* /www/err
-	root /err_images/* /www/err
+	@errpaths {
+		path /err_css/*
+		path /err_images/*
+	}
+	route @errpaths {
+		root * /www/err
+		file_server
+	}
 	respond /unknown_error_not_4xx_not_5xx "{http.error.status_code} {http.error.status_text}"
 
 	handle_errors {
