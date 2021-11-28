@@ -1,7 +1,7 @@
 {
   "author": "Adam Piontek <adam@73k.us> (https://73k.us)",
   "name": "@73kus/custom-rainbow-error-pages",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Simple but pretty unicorn rainbow error pages for webserver 40x/50x HTTP errors",
   "homepage": "https://git.73k.us/73kus-err.git",
   "browserslist": [
@@ -74,7 +74,7 @@
     "watch": "webpack --config configuration/webpack.dev.config.js --mode=development --watch",
     "bundle": "npm install && npm run watch",
     "dev": "webpack serve --config configuration/webpack.dev.config.js --mode=development",
-    "production": "NODE_ENV=production webpack --config configuration/webpack.prod.config.js --mode=production",
+    "prod": "NODE_ENV=production webpack --config configuration/webpack.prod.config.js --mode=production",
     "lint:sass": "sass-lint -v -q",
     "lint:js": "eslint --ext .js src/js/",
     "stats": "webpack --config configuration/webpack.prod.config.js --mode=production --json > dist/stats.json && webpack-bundle-analyzer dist/stats.json"
